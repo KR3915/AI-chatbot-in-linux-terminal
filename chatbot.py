@@ -1,24 +1,33 @@
 from groq import Groq
-is_running = True
-client = Groq()
-while is_running = True:
-  
-  message = input("enter message:")
-  completion = client.chat.completions.create(
-      model="meta-llama/llama-4-scout-17b-16e-instruct",
-      messages=[
-        {
-          "role": "user",
-          "content": message
-        }
-      ],
-      temperature=1,
-      max_completion_tokens=1024,
-      top_p=1,
-      stream=True,
-      stop=None,
-  )
+import sys
 
-  for chunk in completion:
-      print(chunk.choices[0].delta.content or "", end="")
-  print("\n")
+client = Groq()
+
+while True:
+    try:
+        message = input("enter message (type 'q' to quit): ")
+        if message.strip().lower() == 'q':
+            print("Q pressed! Exiting...")
+            break
+
+        completion = client.chat.completions.create(
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
+            messages=[{"role": "user", "content": message}],
+            temperature=1,
+            max_completion_tokens=1024,
+            top_p=1,
+            stream=True,
+            stop=None,
+        )
+
+        for chunk in completion:
+            content = chunk.choices[0].delta.content
+            if content:
+                print(content, end="", flush=True)
+        print()
+    except (EOFError, KeyboardInterrupt):
+        print("\nExiting...")
+        break
+
+print("Program terminated.")
+sys.exit(0)
