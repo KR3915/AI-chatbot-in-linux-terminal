@@ -9,12 +9,12 @@ while True:
         if message.strip().lower() == 'q':
             print("Q pressed! Exiting...")
             break
-
+        message = f"{message}, answer max 350 chars"
         completion = client.chat.completions.create(
             model="meta-llama/llama-4-scout-17b-16e-instruct",
             messages=[{"role": "user", "content": message}],
-            temperature=1,
-            max_completion_tokens=1024,
+            temperature=0,
+            max_completion_tokens=70,
             top_p=1,
             stream=True,
             stop=None,
@@ -29,5 +29,5 @@ while True:
         print("\nExiting...")
         break
 
-print("Program terminated.")
+print("chat closed")
 sys.exit(0)
