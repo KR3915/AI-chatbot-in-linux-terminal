@@ -19,12 +19,13 @@ while True:
             stream=True,
             stop=None,
         )
-
+        print("------------------------------------------\nCHATBOT: ")
         for chunk in completion:
             content = chunk.choices[0].delta.content
             if content:
                 print(content, end="", flush=True)
         print()
+        print("------------------------------------------")
     except (EOFError, KeyboardInterrupt):
         print("\nExiting...")
         break
