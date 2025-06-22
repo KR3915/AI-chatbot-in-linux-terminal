@@ -3,7 +3,6 @@
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-lightgrey.svg)
 ![Build](https://img.shields.io/badge/Build-PyInstaller-orange.svg)
-This project provides a command-line chatbot interface that uses the [GROQ API](https://groq.com/) to generate text-based responses from a language model. It is packaged into a standalone binary using `pyinstaller` for ease of use.
 
 ---
 ##Example
@@ -17,7 +16,7 @@ enabling integration and functionality sharing.
 ```
 
 ## Overview
-
+This project provides a command-line chatbot interface that uses the [GROQ API](https://groq.com/) to generate text-based responses from a language model. It is packaged into a standalone binary using `pyinstaller` for ease of use.
 The chatbot communicates with the GROQ API to send user input and receive language model responses. It uses the `groq` Python client to interact with the API. The project includes a setup script that:
 
 - Builds the Python chatbot into a single binary using PyInstaller
